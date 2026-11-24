@@ -119,6 +119,12 @@ background:linear-gradient(180deg,#240a12 0%,#4d1219 30%,#8d1f20 58%,#b12b24 76%
 .book:hover .cover .ar{animation:wig .6s ease-in-out}
 @keyframes wig{25%{transform:rotate(-6deg) scale(1.08)}75%{transform:rotate(6deg) scale(1.08)}}
 .c1{background:linear-gradient(150deg,#c8352d,#8a1d19)}
+.cover.photo{place-items:end start;padding:14px}
+.cover.photo::before,.cover.photo::after{display:none}
+.cover.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;transition:transform .6s ease}
+.cover.photo .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(138,29,25,0) 35%,rgba(110,23,20,.75) 100%)}
+.cover.photo .ar{width:auto;height:52px;padding:0 20px 8px;font-size:30px;background:rgba(138,29,25,.55);backdrop-filter:blur(6px);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.book:hover .cover.photo img{transform:scale(1.05)}
 .c2{background:linear-gradient(150deg,#1d9692,#0f5e5c)}
 .c3{background:linear-gradient(150deg,#7a2421,#3f0f0e)}
 .book .body{display:flex;flex-direction:column;flex:1;padding:24px 26px 22px}
@@ -292,7 +298,7 @@ footer nav a:hover{text-decoration:underline}
 @media(max-width:600px){.times{grid-template-columns:repeat(2,minmax(0,1fr))}.next .cd span{flex:1;min-width:0}}
 @media(min-width:601px) and (max-width:900px){.book{flex-direction:row}.cover{width:240px;height:auto;flex:none}}
 @media(max-width:700px){.lamp{display:none}.floaty span:nth-child(n+5){display:none}}
-@media(max-width:600px){.qact .btn{flex:1 1 0;justify-content:center;padding:0 14px}.cover{height:130px}.cover .ar{font-size:38px;width:170px;height:74px}.hero .cta .btn{width:100%;justify-content:center}}
+@media(max-width:600px){.qact .btn{flex:1 1 0;justify-content:center;padding:0 14px}.cover{height:130px}.cover:not(.photo) .ar{font-size:38px;width:170px;height:74px}.cover.photo{height:180px}.hero .cta .btn{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -480,7 +486,7 @@ footer nav a:hover{text-decoration:underline}
     </div>
     <div class="svc">
       <article class="book" data-card>
-        <div class="cover c1"><span class="ar" lang="ar">القرآن</span></div>
+        <div class="cover c1 photo"><img src="assets/pendidikan-quran.jpg" alt="Santri TPQ Baiturrahman belajar mengaji bersama di Masjid Baiturrahman" width="1200" height="515" loading="lazy" decoding="async"><span class="shade" aria-hidden="true"></span><span class="ar" lang="ar">القرآن</span></div>
         <div class="body"><h3>Pendidikan al-Qur'an</h3><p>Program pembelajaran membaca, memahami, dan menghafal al-Qur'an dengan metode yang efektif.</p><a class="more" href="https://wa.me/6281213041786?text=Assalamu%27alaikum%2C%20saya%20ingin%20bertanya%20tentang%20program%20Pendidikan%20al-Qur%27an%20di%20TPQ%20Baiturrahman." target="_blank" rel="noopener" aria-label="Tanya program Pendidikan al-Qur&#39;an via WhatsApp">Tanya program ini <span aria-hidden="true">→</span></a></div>
       </article>
       <article class="book" data-card>
