@@ -1,4 +1,4 @@
-# TPQ Baiturrahman — Website
+# TPQ Baiturrahman Website
 
 Landing page TPQ Baiturrahman, Masjid Baiturrahman, Setu, Cipayung, Jakarta Timur.
 
