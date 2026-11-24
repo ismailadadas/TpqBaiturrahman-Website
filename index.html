@@ -178,6 +178,14 @@ background:linear-gradient(160deg,#240a12 0%,#4d1219 35%,#8d1f20 70%,#b12b24 88%
 .contact .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:center;position:relative}
 .contact .lead{color:#ffe3d8;margin-top:18px}
 .wa-num{display:block;margin-top:14px;font-size:15px;color:#ffe3d8}
+.free{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:8px 16px 8px 8px;border-radius:999px;background:var(--sun);color:#3a1410;font:600 16px/1 Fredoka,sans-serif;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.free b{display:grid;place-items:center;height:30px;padding:0 12px;border-radius:999px;background:#b12b24;color:#fff;font-weight:600}
+.perks{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px}
+.perks li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:center;font-size:16.5px;color:#fff}
+.perks li::before{content:"";width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffc93c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/16px no-repeat}
+.perks b{color:var(--sun);font-weight:700}
+.hero-free{display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;padding:7px 16px;border-radius:999px;background:rgba(255,201,60,.16);box-shadow:inset 0 0 0 1px rgba(255,201,60,.5);color:#ffe27a;font:600 15px/1.2 Fredoka,sans-serif}
+.hero-free i{width:8px;height:8px;border-radius:50%;background:#ffc93c;box-shadow:0 0 0 4px rgba(255,201,60,.25);font-style:normal;animation:tw 2s ease-in-out infinite}
 .contact .btn-wa{margin-top:30px;min-height:60px;padding:0 30px;font-size:19px;background:#fff;color:#14763d;box-shadow:0 6px 0 #e3c2b8,0 18px 40px -16px rgba(0,0,0,.45)}
 .contact .btn-wa:hover{background:#f2fff6}
 .info{list-style:none;margin:0;padding:28px;border-radius:32px;background:rgba(0,0,0,.18);display:grid;gap:22px}
@@ -305,6 +313,7 @@ footer nav a:hover{text-decoration:underline}
   </div>
   <div class="intro">
     <p class="bismillah ar" data-in>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+    <p class="hero-free" data-in><i aria-hidden="true"></i>Belajar mengaji gratis, tanpa biaya</p>
     <h1 data-in>Ayo mengaji di <em>TPQ Baiturrahman</em></h1>
     <p class="tag" data-in>Menjaga kefitrahan anak dengan pendidikan Qur'an dan Sunnah. Belajar sambil bermain, di lingkungan masjid yang hangat.</p>
     <div class="cta" data-in>
@@ -493,8 +502,15 @@ footer nav a:hover{text-decoration:underline}
   <svg class="pattern" aria-hidden="true"><defs><pattern id="pt" width="80" height="80" patternUnits="userSpaceOnUse"><use href="#star8" transform="scale(.4)"/></pattern></defs><rect width="100%" height="100%" fill="url(#pt)"/></svg>
   <div class="wrap">
     <div data-reveal>
+      <p class="free"><b>GRATIS</b>Belajar mengaji tanpa biaya</p>
       <h2>Daftarkan ananda, cukup lewat WhatsApp</h2>
-      <p class="lead">Tanya jadwal, biaya, atau cara pendaftaran. Pengurus TPQ akan membalas pesan Anda.</p>
+      <p class="lead">Tanya jadwal belajar atau cara pendaftaran. Pengurus TPQ akan membalas pesan Anda.</p>
+      <ul class="perks">
+        <li><span>Belajar di TPQ Baiturrahman <b>gratis</b>, tidak dipungut biaya</span></li>
+        <li><span>Tiga program: al-Qur'an, akhlak, dan kreativitas Islam</span></li>
+        <li><span>Belajar di lingkungan Masjid Baiturrahman, Setu</span></li>
+        <li><span>Pendaftaran mudah, cukup kirim pesan WhatsApp</span></li>
+      </ul>
       <a class="btn btn-wa" data-wa href="https://wa.me/6281213041786?text=Assalamu%27alaikum%2C%20saya%20ingin%20bertanya%20tentang%20pendaftaran%20di%20TPQ%20Baiturrahman." target="_blank" rel="noopener">
         <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Chat WhatsApp sekarang
       </a>
