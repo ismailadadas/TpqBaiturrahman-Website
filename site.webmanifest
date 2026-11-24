@@ -1,0 +1,14 @@
+{
+  "name": "TPQ Baiturrahman",
+  "short_name": "TPQ Baiturrahman",
+  "description": "Belajar mengaji gratis untuk anak di Masjid Baiturrahman, Setu, Cipayung, Jakarta Timur.",
+  "lang": "id",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#fff9f4",
+  "theme_color": "#b12b24",
+  "icons": [
+    { "src": "/assets/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -2,6 +2,8 @@
 
 Landing page TPQ Baiturrahman, Masjid Baiturrahman, Setu, Cipayung, Jakarta Timur.
 
+Website: https://www.tpqbaiturrahman.com/
+
 > Menjaga kefitrahan anak dengan pendidikan Qur'an dan Sunnah.
 
 ## Isi halaman
@@ -30,6 +32,15 @@ Untuk online gratis:
 
 - **GitHub Pages**: Settings → Pages → Source: *Deploy from a branch* → branch `main`, folder `/ (root)` → Save.
 - **Netlify / Vercel**: import repo ini, tanpa build command, publish directory `/`.
+
+## SEO dan performa
+
+- Judul, deskripsi, canonical, Open Graph dan Twitter card ada di `<head>` `index.html`; gambar pratinjau link: `assets/og-image.jpg` (1200x630).
+- Data terstruktur (JSON-LD) untuk Google: EducationalOrganization, WebSite, dan tiga Course (gratis).
+- `robots.txt`, `sitemap.xml`, dan `site.webmanifest` di root. Perbarui `<lastmod>` di sitemap kalau isi berubah banyak.
+- Foto program memakai WebP (480/800 px) dengan cadangan JPG; logo di menu memakai versi 96 px.
+- `vercel.json` mengatur cache 7 hari untuk folder `assets/` dan beberapa header keamanan.
+- Kalau domain berubah, ganti semua `https://www.tpqbaiturrahman.com/` di `index.html`, `robots.txt`, dan `sitemap.xml`.
 
 ## Mengubah konten
 
