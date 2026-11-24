@@ -173,6 +173,7 @@ background:linear-gradient(160deg,#240a12 0%,#4d1219 35%,#8d1f20 70%,#b12b24 88%
 .q blockquote::before{content:"\201C";display:block;font-family:Amiri,serif;font-size:64px;line-height:.6;color:var(--red);margin-bottom:10px}
 .q figcaption{display:flex;align-items:center;gap:12px;margin-top:auto}
 .av{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:600 19px/1 Fredoka,sans-serif;color:#fff;flex:none}
+img.av{object-fit:cover}
 .q small{display:block;color:var(--soft);font-size:14px}
 .dots{display:none;justify-content:center;gap:8px;margin-top:18px}
 .dots button{width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center}
@@ -571,13 +572,13 @@ footer nav a:hover{text-decoration:underline}
 {
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const testimonials=[
-    {name:"Zaki Prasojo",role:"Ayah dari Azka",text:"Program di TPQ Baiturrahman sangat membantu anak saya memahami agama secara menyenangkan.",c:"#b12b24"},
-    {name:"Arman Suwana",role:"Ayah dari Arta",text:"Anak saya menjadi lebih percaya diri dalam melafalkan al-Qur'an sejak bergabung di TPQ Baiturrahman.",c:"#17807d"},
-    {name:"Intan Maulida",role:"Ibu dari Aisyah",text:"Pendidik dan programnya sangat luar biasa. Lingkungan yang positif untuk anak-anak.",c:"#7a2421"}
+    {name:"Zaki Prasojo",role:"Ayah dari Azka",text:"Program di TPQ Baiturrahman sangat membantu anak saya memahami agama secara menyenangkan.",c:"#b12b24",img:"assets/testimoni-zaki.jpg"},
+    {name:"Arman Suwana",role:"Ayah dari Arta",text:"Anak saya menjadi lebih percaya diri dalam melafalkan al-Qur'an sejak bergabung di TPQ Baiturrahman.",c:"#17807d",img:"assets/testimoni-arman.jpg"},
+    {name:"Intan Maulida",role:"Ibu dari Aisyah",text:"Pendidik dan programnya sangat luar biasa. Lingkungan yang positif untuk anak-anak.",c:"#7a2421",img:"assets/testimoni-intan.jpg"}
   ];
   const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
   const quotes=document.getElementById('quotes'),dots=document.getElementById('dots');
-  quotes.innerHTML=testimonials.map(t=>`<figure class="q" data-card><blockquote>${esc(t.text)}</blockquote><figcaption><span class="av" style="background:${t.c}">${esc(t.name[0])}</span><span><strong>${esc(t.name)}</strong><small>${esc(t.role)}</small></span></figcaption></figure>`).join('');
+  quotes.innerHTML=testimonials.map(t=>`<figure class="q" data-card><blockquote>${esc(t.text)}</blockquote><figcaption>${t.img?`<img class="av" src="${t.img}" alt="Foto ${esc(t.name)}" style="box-shadow:0 0 0 2px var(--card),0 0 0 4px ${t.c}" width="46" height="46" loading="lazy">`:`<span class="av" style="background:${t.c}">${esc(t.name[0])}</span>`}<span><strong>${esc(t.name)}</strong><small>${esc(t.role)}</small></span></figcaption></figure>`).join('');
   dots.innerHTML=testimonials.map((t,i)=>`<button role="tab" aria-label="Testimoni ${i+1}" class="${i?'':'on'}"></button>`).join('');
   const cards=[...quotes.children],dotBtns=[...dots.children];
   dotBtns.forEach((b,i)=>b.addEventListener('click',()=>cards[i].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})));
