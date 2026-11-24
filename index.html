@@ -280,10 +280,10 @@ footer nav a:hover{text-decoration:underline}
       TPQ Baiturrahman
     </a>
     <ul class="links" id="links">
+      <li><a href="#sholat">Jadwal Sholat</a></li>
       <li><a href="#tentang">Tentang</a></li>
       <li><a href="#layanan">Layanan</a></li>
       <li><a href="#hijaiyah">Flashcard</a></li>
-      <li><a href="#sholat">Jadwal Sholat</a></li>
       <li><a href="#testimoni">Testimoni</a></li>
       <li><a href="#kontak">Kontak</a></li>
     </ul>
@@ -405,6 +405,30 @@ footer nav a:hover{text-decoration:underline}
   </div>
 </section>
 
+<section class="band" id="sholat" style="padding-top:clamp(12px,2.5vw,32px);padding-bottom:0">
+  <div class="wrap">
+    <div class="sky" data-reveal>
+      <svg class="twk" aria-hidden="true" id="prstars"></svg>
+      <svg class="moon" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34" fill="#ffd9a8" opacity=".18"/><path d="M50 14a28 28 0 1 0 0 52 22 22 0 1 1 0-52z" fill="#fff1d6"/></svg>
+      <svg class="skyline" viewBox="0 0 1200 70" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path fill="#240a12" d="M0 70V52h80v-14l26-18 26 18v14h90V30l22-26 22 26v22h120V40a40 40 0 0 1 80 0v12h30V8l8-8 8 8v44h40V36l30-22 30 22v16h130V44a24 24 0 0 1 48 0v8h140V34l24-16 24 16v18h160v18z"/><rect y="52" width="1200" height="18" fill="#240a12"/></svg>
+      <div class="pr">
+        <div>
+          <p class="kicker">Jadwal sholat</p>
+          <h2>Waktu sholat hari ini</h2>
+          <p class="pr-meta"><span id="prDate">Hari ini</span><br>Wilayah DKI Jakarta, termasuk Cipayung, Jakarta Timur</p>
+          <div class="next" aria-live="polite">
+            <small id="prNextLbl">Menuju waktu sholat berikutnya</small>
+            <b id="prNextTime">--:--</b>
+            <div class="cd" aria-hidden="true"><span><i id="cdH">00</i>jam</span><span><i id="cdM">00</i>menit</span><span><i id="cdS">00</i>detik</span></div>
+          </div>
+        </div>
+        <ul class="times" id="prList"></ul>
+      </div>
+      <p class="pr-note">Dihitung otomatis dengan kriteria Kemenag RI (Subuh 20°, Isya 18°, Ashar mazhab Syafi'i) dan disesuaikan dengan jadwal resmi DKI Jakarta. Selisih sekitar 1 menit dapat terjadi.</p>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="tentang">
   <div class="wrap about">
     <div data-reveal>
@@ -455,30 +479,6 @@ footer nav a:hover{text-decoration:underline}
   </div>
 </section>
 
-<section class="band" id="sholat" style="padding-top:0">
-  <div class="wrap">
-    <div class="sky" data-reveal>
-      <svg class="twk" aria-hidden="true" id="prstars"></svg>
-      <svg class="moon" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34" fill="#ffd9a8" opacity=".18"/><path d="M50 14a28 28 0 1 0 0 52 22 22 0 1 1 0-52z" fill="#fff1d6"/></svg>
-      <svg class="skyline" viewBox="0 0 1200 70" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path fill="#240a12" d="M0 70V52h80v-14l26-18 26 18v14h90V30l22-26 22 26v22h120V40a40 40 0 0 1 80 0v12h30V8l8-8 8 8v44h40V36l30-22 30 22v16h130V44a24 24 0 0 1 48 0v8h140V34l24-16 24 16v18h160v18z"/></svg>
-      <div class="pr">
-        <div>
-          <p class="kicker">Jadwal sholat</p>
-          <h2>Waktu sholat hari ini</h2>
-          <p class="pr-meta"><span id="prDate">Hari ini</span><br>Wilayah DKI Jakarta, termasuk Cipayung, Jakarta Timur</p>
-          <div class="next" aria-live="polite">
-            <small id="prNextLbl">Menuju waktu sholat berikutnya</small>
-            <b id="prNextTime">--:--</b>
-            <div class="cd" aria-hidden="true"><span><i id="cdH">00</i>jam</span><span><i id="cdM">00</i>menit</span><span><i id="cdS">00</i>detik</span></div>
-          </div>
-        </div>
-        <ul class="times" id="prList"></ul>
-      </div>
-      <p class="pr-note">Dihitung otomatis dengan kriteria Kemenag RI (Subuh 20°, Isya 18°, Ashar mazhab Syafi'i) dan disesuaikan dengan jadwal resmi DKI Jakarta. Selisih sekitar 1 menit dapat terjadi.</p>
-    </div>
-  </div>
-</section>
-
 <svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50V25C150 0 300 0 450 22S750 50 900 26 1100 0 1200 18V50z" fill="currentColor"/></svg>
 <section class="band testi" id="testimoni">
   <div class="wrap">
@@ -512,7 +512,7 @@ footer nav a:hover{text-decoration:underline}
 <footer>
   <div class="wrap">
     <span>© 2026 TPQ Baiturrahman Setu, Cipayung</span>
-    <nav aria-label="Tautan footer"><a href="#beranda">Beranda</a><a href="#tentang">Tentang</a><a href="#layanan">Layanan</a><a href="#sholat">Jadwal Sholat</a><a href="#testimoni">Testimoni</a><a href="#kontak">Kontak</a></nav>
+    <nav aria-label="Tautan footer"><a href="#beranda">Beranda</a><a href="#sholat">Jadwal Sholat</a><a href="#tentang">Tentang</a><a href="#layanan">Layanan</a><a href="#testimoni">Testimoni</a><a href="#kontak">Kontak</a></nav>
   </div>
 </footer>
 
