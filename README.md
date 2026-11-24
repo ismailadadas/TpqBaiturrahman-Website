@@ -6,18 +6,24 @@ Landing page TPQ Baiturrahman, Masjid Baiturrahman, Setu, Cipayung, Jakarta Timu
 
 ## Isi halaman
 
-- **Beranda**: ilustrasi masjid saat senja dengan animasi (bintang, lampion, santri kecil berjalan ke masjid)
+- **Beranda**: ilustrasi santri kecil membaca Qur'an di depan lengkung mihrab, dikelilingi objek tanah liat yang melayang; panel program dan info singkat
 - **Tentang**: visi dan nilai TPQ
 - **Layanan**: Pendidikan al-Qur'an, Pembinaan Akhlak, Kegiatan Kreativitas Islam (tiap kartu ada tombol tanya via WhatsApp)
-- **Flashcard huruf hijaiyah**: kuis singkat 5 kartu untuk anak
-- **Testimoni** orang tua santri
+- **Pojok anak**: flashcard huruf hijaiyah 5 kartu, mode pilihan ganda atau tebak sendiri
+- **Testimoni** orang tua santri (carousel)
+- **Kolase** ilustrasi bersama slogan TPQ
 - **Kontak**: langsung ke WhatsApp +62 812-1304-1786, alamat, dan jam belajar
+
+## Versi
+
+- **Versi 2** (branch `main`): gaya hangat/cozy — krem pasir, cokelat kopi, terakota; logo masjid di atas Al-Qur'an.
+- **Versi 1** (branch `v1`): tema masjid saat senja dengan nuansa merah.
 
 ## Tech stack
 
 - HTML + CSS modern (satu file, tanpa proses build)
 - [GSAP](https://gsap.com/) + ScrollTrigger (dari CDN) untuk animasi
-- Font: Fredoka, Nunito, Amiri (Google Fonts)
+- Font: Plus Jakarta Sans, Amiri (Google Fonts)
 
 Halaman tetap tampil normal walaupun GSAP gagal dimuat, dan animasi otomatis dimatikan untuk pengunjung yang memilih *reduce motion*.
 
