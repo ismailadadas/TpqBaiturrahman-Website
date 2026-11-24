@@ -11,7 +11,6 @@ Landing page TPQ Baiturrahman, Masjid Baiturrahman, Setu, Cipayung, Jakarta Timu
 - **Layanan**: Pendidikan al-Qur'an, Pembinaan Akhlak, Kegiatan Kreativitas Islam (tiap kartu ada tombol tanya via WhatsApp)
 - **Pojok anak**: flashcard huruf hijaiyah 5 kartu, mode pilihan ganda atau tebak sendiri
 - **Testimoni** orang tua santri (carousel)
-- **Kolase** ilustrasi bersama slogan TPQ
 - **Kontak**: langsung ke WhatsApp +62 812-1304-1786, alamat, dan jam belajar
 
 ## Versi
