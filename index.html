@@ -53,7 +53,7 @@ p{margin:0}
 .brand svg{transition:transform .5s cubic-bezier(.3,1.8,.5,1)}.brand:hover svg{transform:rotate(-12deg) scale(1.1)}
 .brand svg{width:38px;height:38px}
 .links{display:flex;gap:4px;margin-inline-start:auto;list-style:none;padding:0;margin-block:0}
-.links a{display:block;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:700;font-size:16px}
+.links a{display:block;white-space:nowrap;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:700;font-size:16px}
 .links a:hover{background:color-mix(in srgb,currentColor 12%,transparent)}
 .nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 .menu{display:none;margin-inline-start:auto;width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:inherit;cursor:pointer}
@@ -124,6 +124,36 @@ background:linear-gradient(180deg,#240a12 0%,#4d1219 30%,#8d1f20 58%,#b12b24 76%
 :root:not([data-theme=light]) .more{color:light-dark(var(--red),#ff8a73)}
 .more span{transition:transform .25s}
 .more:hover{text-decoration:underline;text-underline-offset:4px}.more:hover span{transform:translateX(4px)}
+
+/* jadwal sholat */
+.sky{position:relative;overflow:hidden;border-radius:36px;color:#fff;padding:clamp(26px,4.5vw,52px);
+background:linear-gradient(160deg,#240a12 0%,#4d1219 35%,#8d1f20 70%,#b12b24 88%,#e0693b 100%);box-shadow:0 30px 60px -36px rgba(94,21,19,.8)}
+.sky .twk{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sky .moon{position:absolute;right:clamp(18px,4vw,48px);top:clamp(16px,3vw,34px);width:clamp(48px,7vw,76px);opacity:.95;animation:bob 7s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.sky .skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:70px;opacity:.35;pointer-events:none}
+.pr{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:clamp(24px,5vw,60px);align-items:center}
+.sky .kicker{color:#ffcdbd!important}
+.sky h2{color:#fff}
+.pr-meta{margin-top:10px;color:#ffdccf;font-size:16px}
+.next{margin-top:26px;padding:20px 22px;border-radius:24px;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);backdrop-filter:blur(4px)}
+.next small{display:block;font:600 15px/1.2 Fredoka,sans-serif;color:#ffdccf}
+.next b{display:block;font:700 clamp(44px,6vw,64px)/1 Fredoka,sans-serif;margin-top:6px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.next .cd{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.next .cd span{min-width:64px;padding:8px 10px;border-radius:14px;background:rgba(0,0,0,.22);text-align:center;font:600 13px/1.2 Nunito,sans-serif;color:#ffdccf}
+.next .cd i{display:block;font:700 22px/1.1 Fredoka,sans-serif;font-style:normal;color:#fff;font-variant-numeric:tabular-nums}
+.times{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.times li{position:relative;padding:16px 14px 14px;border-radius:20px;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);transition:background .4s,transform .4s}
+.times .ar{display:block;font-size:18px;line-height:1.2;color:#ffcdbd;text-align:left;direction:rtl}
+.times span{display:block;font:600 15px/1.2 Fredoka,sans-serif;margin-top:4px}
+.times b{display:block;font:700 26px/1.1 Fredoka,sans-serif;margin-top:6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.times li.past{opacity:.55}
+.times li.now{background:var(--sun);color:#3a1410;box-shadow:0 14px 30px -14px rgba(255,201,60,.8);transform:translateY(-4px)}
+.times li.now .ar{color:#8a1d19}
+.times li.now .ar{visibility:hidden}
+.times li.now::after{content:"Sekarang";position:absolute;top:14px;left:14px;padding:3px 9px;border-radius:999px;background:#b12b24;color:#fff;font:700 11px/1.3 Nunito,sans-serif}
+.times li.sunnah span::after{content:" · sunnah";font-weight:500;font-size:12px;opacity:.8}
+.pr-note{position:relative;margin-top:24px;font-size:13.5px;color:#ffd5c8;max-width:80ch}
 
 /* testimoni */
 .testi{background:light-dark(#fbefe7,#1f110e)}
@@ -214,12 +244,14 @@ footer nav a:hover{text-decoration:underline}
 .float::before{content:"";position:absolute;inset:0;border-radius:50%;background:#1fa855;z-index:-1;animation:ping 2.4s ease-out infinite}
 @keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
 
-@media(max-width:900px){
+@media(max-width:1120px){
 .links,.nav .wrap>.btn{display:none}
 .menu{display:block}
 .nav.open{background:var(--bg);color:var(--ink)}
 .nav.open .links{display:grid;position:absolute;top:68px;left:0;right:0;background:var(--bg);padding:8px max(5vw,18px) 22px;box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
 .nav.open .links a{padding:14px 12px;font-size:17px}
+}
+@media(max-width:900px){
 .about,.contact .wrap{grid-template-columns:minmax(0,1fr)}
 .svc{grid-template-columns:minmax(0,1fr);gap:20px}
 .quotes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(-1*max(5vw,18px));padding:4px max(5vw,18px) 8px;scrollbar-width:none}
@@ -227,6 +259,8 @@ footer nav a:hover{text-decoration:underline}
 .q{flex:0 0 min(84%,420px);scroll-snap-align:center}
 .dots{display:flex}
 }
+@media(max-width:900px){.pr{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.times{grid-template-columns:repeat(2,minmax(0,1fr))}.next .cd span{flex:1;min-width:0}}
 @media(min-width:601px) and (max-width:900px){.book{flex-direction:row}.cover{width:240px;height:auto;flex:none}}
 @media(max-width:700px){.lamp{display:none}.floaty span:nth-child(n+5){display:none}}
 @media(max-width:600px){.qact .btn{flex:1 1 0;justify-content:center;padding:0 14px}.cover{height:130px}.cover .ar{font-size:38px;width:170px;height:74px}.hero .cta .btn{width:100%;justify-content:center}}
@@ -245,6 +279,7 @@ footer nav a:hover{text-decoration:underline}
       <li><a href="#tentang">Tentang</a></li>
       <li><a href="#layanan">Layanan</a></li>
       <li><a href="#hijaiyah">Flashcard</a></li>
+      <li><a href="#sholat">Jadwal Sholat</a></li>
       <li><a href="#testimoni">Testimoni</a></li>
       <li><a href="#kontak">Kontak</a></li>
     </ul>
@@ -408,6 +443,30 @@ footer nav a:hover{text-decoration:underline}
   </div>
 </section>
 
+<section class="band" id="sholat" style="padding-top:0">
+  <div class="wrap">
+    <div class="sky" data-reveal>
+      <svg class="twk" aria-hidden="true" id="prstars"></svg>
+      <svg class="moon" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34" fill="#ffd9a8" opacity=".18"/><path d="M50 14a28 28 0 1 0 0 52 22 22 0 1 1 0-52z" fill="#fff1d6"/></svg>
+      <svg class="skyline" viewBox="0 0 1200 70" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path fill="#240a12" d="M0 70V52h80v-14l26-18 26 18v14h90V30l22-26 22 26v22h120V40a40 40 0 0 1 80 0v12h30V8l8-8 8 8v44h40V36l30-22 30 22v16h130V44a24 24 0 0 1 48 0v8h140V34l24-16 24 16v18h160v18z"/></svg>
+      <div class="pr">
+        <div>
+          <p class="kicker">Jadwal sholat</p>
+          <h2>Waktu sholat hari ini</h2>
+          <p class="pr-meta"><span id="prDate">Hari ini</span><br>Wilayah DKI Jakarta, termasuk Cipayung, Jakarta Timur</p>
+          <div class="next" aria-live="polite">
+            <small id="prNextLbl">Menuju waktu sholat berikutnya</small>
+            <b id="prNextTime">--:--</b>
+            <div class="cd" aria-hidden="true"><span><i id="cdH">00</i>jam</span><span><i id="cdM">00</i>menit</span><span><i id="cdS">00</i>detik</span></div>
+          </div>
+        </div>
+        <ul class="times" id="prList"></ul>
+      </div>
+      <p class="pr-note">Dihitung otomatis dengan kriteria Kemenag RI (Subuh 20°, Isya 18°, Ashar mazhab Syafi'i) dan disesuaikan dengan jadwal resmi DKI Jakarta. Selisih sekitar 1 menit dapat terjadi.</p>
+    </div>
+  </div>
+</section>
+
 <svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50V25C150 0 300 0 450 22S750 50 900 26 1100 0 1200 18V50z" fill="currentColor"/></svg>
 <section class="band testi" id="testimoni">
   <div class="wrap">
@@ -441,7 +500,7 @@ footer nav a:hover{text-decoration:underline}
 <footer>
   <div class="wrap">
     <span>© 2026 TPQ Baiturrahman Setu, Cipayung</span>
-    <nav aria-label="Tautan footer"><a href="#beranda">Beranda</a><a href="#tentang">Tentang</a><a href="#layanan">Layanan</a><a href="#testimoni">Testimoni</a><a href="#kontak">Kontak</a></nav>
+    <nav aria-label="Tautan footer"><a href="#beranda">Beranda</a><a href="#tentang">Tentang</a><a href="#layanan">Layanan</a><a href="#sholat">Jadwal Sholat</a><a href="#testimoni">Testimoni</a><a href="#kontak">Kontak</a></nav>
   </div>
 </footer>
 
@@ -515,6 +574,54 @@ footer nav a:hover{text-decoration:underline}
     const a=e.target.closest('[data-act]');if(!a||a.disabled)return;
     ({flip,yes:()=>answer(true),no:()=>answer(false),again:newRound})[a.dataset.act]()});
   newRound();
+
+  /* jadwal sholat (kriteria Kemenag RI, koordinat acuan DKI Jakarta) */
+  {
+    const LAT=-(6+10/60),LNG=106+49/60,TZ=7;
+    const R=Math.PI/180,sn=d=>Math.sin(d*R),cs=d=>Math.cos(d*R),tn=d=>Math.tan(d*R);
+    const asn=x=>Math.asin(x)/R,acs=x=>Math.acos(x)/R,at2=(y,x)=>Math.atan2(y,x)/R,act=x=>Math.atan(1/x)/R;
+    const fx=(a,b)=>{a-=b*Math.floor(a/b);return a<0?a+b:a};
+    const calc=(y,m,d)=>{let Y=y,M=m;if(M<=2){Y--;M+=12}const A=Math.floor(Y/100),B=2-A+Math.floor(A/4);
+      const jd=Math.floor(365.25*(Y+4716))+Math.floor(30.6001*(M+1))+d+B-1524.5-LNG/360;
+      const sun=t=>{const D=jd+t-2451545,g=fx(357.529+.98560028*D,360),q=fx(280.459+.98564736*D,360),L=fx(q+1.915*sn(g)+.02*sn(2*g),360),e=23.439-.00000036*D;
+        return{dec:asn(sn(e)*sn(L)),eqt:q/15-fx(at2(cs(e)*sn(L),cs(L))/15,24)}};
+      const noon=t=>fx(12-sun(t).eqt,24);
+      const alt=(a,t,ccw)=>{const dc=sun(t).dec,T=acs((-sn(a)-sn(dc)*sn(LAT))/(cs(dc)*cs(LAT)))/15;return noon(t)+(ccw?-T:T)};
+      const asr=t=>{const dc=sun(t).dec;return alt(-act(1+tn(Math.abs(LAT-dc))),t)};
+      let T={f:5,r:6,u:6.5,d:12,a:13,m:18,i:18};
+      for(let k=0;k<2;k++){const p=Object.fromEntries(Object.entries(T).map(([a,v])=>[a,v/24]));
+        T={f:alt(20,p.f,1),r:alt(.833,p.r,1),u:alt(-4.5,p.u,1),d:noon(p.d),a:asr(p.a),m:alt(.833,p.m),i:alt(18,p.i)}}
+      const off=TZ-LNG/15,up=(h,ih)=>Math.ceil((h+off)*60+ih);
+      const subuh=up(T.f,1.85);
+      return{imsak:subuh-10,subuh,terbit:Math.floor((T.r+off)*60-2),dhuha:up(T.u,2),dzuhur:up(T.d,3),ashar:up(T.a,2),maghrib:up(T.m,2.5),isya:up(T.i,2)}};
+    const items=[["imsak","Imsak","إمساك"],["subuh","Subuh","الفجر",1],["terbit","Terbit","الشروق"],["dhuha","Dhuha","الضحى",0,1],["dzuhur","Dzuhur","الظهر",1],["ashar","Ashar","العصر",1],["maghrib","Maghrib","المغرب",1],["isya","Isya","العشاء",1]];
+    const hm=m=>String(Math.floor(m/60)%24).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+    const wibNow=()=>{const n=new Date();return new Date(n.getTime()+(TZ*60+n.getTimezoneOffset())*60000)};
+    const list=document.getElementById('prList'),dateEl=document.getElementById('prDate');
+    let dayKey='',today=null,tomorrow=null;
+    const setDay=w=>{dayKey=w.toDateString();today=calc(w.getFullYear(),w.getMonth()+1,w.getDate());
+      const t=new Date(w.getTime()+864e5);tomorrow=calc(t.getFullYear(),t.getMonth()+1,t.getDate());
+      try{dateEl.textContent=new Intl.DateTimeFormat('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'Asia/Jakarta'}).format(new Date())}catch(e){dateEl.textContent=w.toLocaleDateString('id-ID')}
+      list.innerHTML=items.map(([k,n,ar,,su])=>`<li data-k="${k}"${su?' class="sunnah"':''} data-card><em class="ar" lang="ar" style="font-style:normal">${ar}</em><span>${n}</span><b>${hm(today[k])}</b></li>`).join('')};
+    const pad=n=>String(n).padStart(2,'0');
+    const tick=()=>{const w=wibNow();if(w.toDateString()!==dayKey)setDay(w);
+      const sec=w.getHours()*3600+w.getMinutes()*60+w.getSeconds(),mins=sec/60;
+      const wajib=items.filter(x=>x[3]).map(x=>x[0]);
+      let nk=wajib.find(k=>today[k]*60>sec),target,nextName;
+      if(nk){target=today[nk]*60;nextName=nk}else{target=86400+tomorrow.subuh*60;nextName='subuh'}
+      const nm=items.find(x=>x[0]===nextName)[1];
+      document.getElementById('prNextLbl').textContent=`Menuju ${nm}${nk?'':' (besok)'}`;
+      document.getElementById('prNextTime').textContent=hm(nk?today[nk]:tomorrow.subuh);
+      let left=Math.max(0,target-sec);
+      document.getElementById('cdH').textContent=pad(Math.floor(left/3600));document.getElementById('cdM').textContent=pad(Math.floor(left%3600/60));document.getElementById('cdS').textContent=pad(left%60);
+      // waktu yang sedang berlangsung
+      const cur=[...wajib].reverse().find(k=>today[k]<=mins);
+      const curOk=cur&&!(cur==='subuh'&&mins>=today.terbit);
+      [...list.children].forEach(li=>{const k=li.dataset.k;li.classList.toggle('now',curOk&&k===cur);li.classList.toggle('past',today[k]<=mins&&!(curOk&&k===cur))})};
+    tick();setInterval(tick,1000);
+    const st=document.getElementById('prstars');let sd=11;const rr=()=>(sd=(sd*9301+49297)%233280)/233280;
+    st.innerHTML=Array.from({length:40},()=>`<circle class="tw" cx="${(rr()*100).toFixed(1)}%" cy="${(rr()*60).toFixed(1)}%" r="${(rr()*1.4+.5).toFixed(1)}" fill="#fff" style="animation-delay:-${(rr()*3).toFixed(1)}s"/>`).join('');
+  }
 
   const stars=document.getElementById('stars');
   let seed=7;const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
