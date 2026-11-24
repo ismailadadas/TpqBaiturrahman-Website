@@ -33,4 +33,4 @@ Untuk online gratis:
 
 ## Mengubah konten
 
-Semua teks ada di `index.html`. Nomor WhatsApp ada di tautan `https://wa.me/6281213041786?...` (cari `wa.me`).
+Semua teks ada di `index.html`. Logo dan favicon ada di folder `assets/` (plus `favicon.ico` di root); ganti file-file itu untuk memperbarui logo. Nomor WhatsApp ada di tautan `https://wa.me/6281213041786?...` (cari `wa.me`).
