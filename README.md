@@ -9,7 +9,7 @@ Landing page TPQ Baiturrahman, Masjid Baiturrahman, Setu, Cipayung, Jakarta Timu
 - **Beranda**: ilustrasi masjid saat senja dengan animasi (bintang, lampion, santri kecil berjalan ke masjid)
 - **Tentang**: visi dan nilai TPQ
 - **Layanan**: Pendidikan al-Qur'an, Pembinaan Akhlak, Kegiatan Kreativitas Islam (tiap kartu ada tombol tanya via WhatsApp)
-- **Flashcard huruf hijaiyah**: kuis singkat 5 kartu untuk anak
+- **Flashcard huruf hijaiyah**: 5 kartu untuk anak, mode pilihan ganda atau tebak sendiri
 - **Jadwal sholat** hari ini untuk DKI Jakarta (Cipayung, Jakarta Timur): dihitung otomatis dengan kriteria Kemenag RI, lengkap dengan hitung mundur ke waktu sholat berikutnya
 - **Testimoni** orang tua santri
 - **Kontak**: langsung ke WhatsApp +62 812-1304-1786 dan alamat

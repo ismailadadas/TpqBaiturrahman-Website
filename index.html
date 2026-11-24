@@ -242,6 +242,23 @@ background:linear-gradient(160deg,#240a12 0%,#4d1219 35%,#8d1f20 70%,#b12b24 88%
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
 .chips span{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:light-dark(#fff1c9,#3a2a10);font:600 16px/1 Fredoka,sans-serif}
 .chips b{font:700 26px/1 Amiri,serif}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:light-dark(#fbe7df,#2e1a16);margin-top:16px}
+.seg button{min-height:42px;padding:0 18px;border:0;border-radius:999px;background:none;color:var(--ink);font:600 16px/1 Fredoka,sans-serif;cursor:pointer;transition:background .25s,color .25s}
+.seg button[aria-pressed=true]{background:var(--red);color:#fff;box-shadow:0 4px 0 #7a1c17}
+.qtop{margin-top:18px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:30px}
+.opts button{min-height:62px;padding:0 12px;border:0;border-radius:20px;background:light-dark(#fbefe7,#2e1a16);color:var(--ink);font:600 21px/1.1 Fredoka,sans-serif;cursor:pointer;box-shadow:0 5px 0 light-dark(#ecd3c6,#160b09);transition:transform .2s cubic-bezier(.3,1.8,.5,1),background .2s,color .2s}
+.opts button:hover:not(:disabled){transform:translateY(-3px) rotate(-1deg)}
+.opts button:disabled{cursor:default}
+.opts button.right{background:#1fa855;color:#fff;box-shadow:0 5px 0 #13753a;animation:pop .5s cubic-bezier(.3,1.8,.5,1)}
+.opts button.wrong{background:#e9a20f;color:#fff;box-shadow:0 5px 0 #a87300;animation:shake .45s}
+.opts button.dim{opacity:.45}
+.back.miss{background:linear-gradient(150deg,#efb43a,#c27c0e);box-shadow:0 8px 0 #8f5a06}
+.fb{min-height:1.4em;margin-top:18px;font:600 20px/1.3 Fredoka,sans-serif}
+.fb.good{color:light-dark(#13893f,#5fd88f)}.fb.try{color:light-dark(#a86a00,#ffc93c)}
+div.fc{cursor:default}div.fc:hover:not(.flipped){transform:none}
+@keyframes pop{0%{transform:scale(.6)}100%{transform:scale(1)}}
+@keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
 .wave{display:block;width:100%;height:50px;color:light-dark(#fbefe7,#1f110e)}
 .wave.red{color:var(--red)}
 footer{background:var(--deep);color:#f3d6cc;padding:34px max(5vw,18px);font-size:14px}
@@ -482,7 +499,7 @@ footer nav a:hover{text-decoration:underline}
   <div class="wrap">
     <div class="hj-head" data-reveal>
       <div><p class="kicker">Pojok anak</p><h2>Flashcard huruf hijaiyah, yuk!</h2></div>
-      <p class="lead" style="max-width:36ch">Tebak hurufnya, lalu ketuk kartu untuk melihat jawaban. Lima kartu setiap putaran.</p>
+      <p class="lead" style="max-width:36ch">Pilih jawaban yang benar, atau tebak sendiri lalu balik kartunya. Lima kartu setiap putaran.</p>
     </div>
     <div class="quiz" id="quiz" data-reveal><p class="qq">Memuat kuis…</p></div>
   </div>
@@ -567,40 +584,53 @@ footer nav a:hover{text-decoration:underline}
   const pool=hj.filter(([l])=>l!=='ح'&&l!=='ه'); // dua "Ha" dilewati agar tidak membingungkan
   const quiz=document.getElementById('quiz'),N=5;
   const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-  let deck=[],qi=0,score=0,marks=[],miss=[],first=true,busy=false;
+  const praise=['Benar, masya Allah!','Pintar sekali!','Barakallah, benar!','Hebat, tepat sekali!'];
+  let mode='mc',deck=[],qi=0,score=0,marks=[],miss=[],first=true,busy=false,answered=false;
   const dotsHtml=()=>Array.from({length:N},(_,i)=>`<i class="${marks[i]||(i===qi?'cur':'')}"></i>`).join('');
-  const renderCard=()=>{const [l,n]=deck[qi];
-    quiz.innerHTML=`<div class="qtop"><span class="qstep">Kartu ${qi+1} dari ${N}</span><span class="qdots" aria-hidden="true">${dotsHtml()}</span></div>
+  const segHtml=()=>`<div class="seg" role="group" aria-label="Mode permainan"><button type="button" data-mode="mc" aria-pressed="${mode==='mc'}">Pilihan ganda</button><button type="button" data-mode="self" aria-pressed="${mode==='self'}">Tebak sendiri</button></div>`;
+  const renderCard=()=>{const {ans:[l,n],opts}=deck[qi],mc=mode==='mc';answered=false;
+    const tag=mc?'div':'button type="button"',endTag=mc?'div':'button';
+    quiz.innerHTML=segHtml()+`<div class="qtop"><span class="qstep">Kartu ${qi+1} dari ${N}</span><span class="qdots" aria-hidden="true">${dotsHtml()}</span></div>
     <p class="qq">Huruf apa ini?</p>
     <div class="deck${qi===N-1?' last':''}"><div class="slot${first?'':' in'}">
-      <button class="fc" type="button" aria-label="Kartu huruf ${esc(l)}. Ketuk untuk membalik">
-        <span class="face front"><span class="art"><span class="big" lang="ar">${esc(l)}</span></span><small>Ketuk untuk membalik ↻</small></span>
-        <span class="face back"><span class="art"><span class="sm" lang="ar">${esc(l)}</span><span class="nm">${esc(n)}</span></span><small>Tebakanmu benar?</small></span>
-      </button></div></div>
-    <p class="sr" id="fb" aria-live="polite"></p>
-    <div class="qact" id="qact"><button class="btn qbtn" data-act="flip" type="button">Balik kartu ↻</button></div>`;
-    if(!first)quiz.querySelector('.fc').focus({preventScroll:true});first=false};
-  const flip=()=>{const fc=quiz.querySelector('.fc');if(!fc||fc.classList.contains('flipped'))return;
-    fc.classList.add('flipped');document.getElementById('fb').textContent='Ini huruf '+deck[qi][1];
+      <${tag} class="fc"${mc?'':` aria-label="Kartu huruf ${esc(l)}. Ketuk untuk membalik"`}>
+        <span class="face front"><span class="art"><span class="big" lang="ar">${esc(l)}</span></span><small>${mc?'Pilih jawabannya, ya':'Ketuk untuk membalik ↻'}</small></span>
+        <span class="face back"><span class="art"><span class="sm" lang="ar">${esc(l)}</span><span class="nm">${esc(n)}</span></span><small>${mc?'Ini jawabannya':'Tebakanmu benar?'}</small></span>
+      </${endTag}></div></div>
+    ${mc?`<div class="opts">${opts.map(([,on],i)=>`<button type="button" data-opt="${i}">${esc(on)}</button>`).join('')}</div>`:''}
+    <p class="fb" id="fb" aria-live="polite"></p>
+    <div class="qact" id="qact" style="${mc?'margin-top:6px;min-height:0':''}">${mc?'':'<button class="btn qbtn" data-act="flip" type="button">Balik kartu ↻</button>'}</div>`;
+    if(!first)quiz.querySelector(mc?'[data-opt]':'.fc').focus({preventScroll:true});first=false};
+  const record=ok=>{if(ok)score++;else miss.push(deck[qi].ans);marks[qi]=ok?'ok':'no';const d=quiz.querySelector('.qdots');if(d)d.innerHTML=dotsHtml()};
+  const go=()=>{if(busy)return;busy=true;quiz.querySelectorAll('.qact button').forEach(b=>b.disabled=true);
+    const slot=quiz.querySelector('.slot');slot.classList.remove('in');slot.classList.add(marks[qi]==='ok'?'out-r':'out-l');
+    setTimeout(()=>{busy=false;qi++;qi<N?renderCard():renderEnd()},reduce?0:430)};
+  const pick=i=>{if(answered)return;answered=true;const {ans,opts}=deck[qi],ok=opts[i]===ans;
+    quiz.querySelectorAll('[data-opt]').forEach((b,k)=>{b.disabled=true;if(opts[k]===ans)b.classList.add('right');else if(k===i)b.classList.add('wrong');else b.classList.add('dim')});
+    record(ok);if(!ok)quiz.querySelector('.back').classList.add('miss');
+    quiz.querySelector('.fc').classList.add('flipped');
+    const fb=document.getElementById('fb');fb.className='fb '+(ok?'good':'try');
+    fb.textContent=ok?praise[Math.floor(Math.random()*praise.length)]:`Belum tepat. Ini huruf ${ans[1]}.`;
+    const qa=document.getElementById('qact');qa.style.cssText='';
+    qa.innerHTML=`<button class="btn qbtn" data-act="next" type="button">${qi<N-1?'Kartu berikutnya →':'Lihat hasil →'}</button>`;
+    qa.querySelector('button').focus({preventScroll:true})};
+  const flip=()=>{const fc=quiz.querySelector('button.fc');if(!fc||fc.classList.contains('flipped'))return;
+    fc.classList.add('flipped');const fb=document.getElementById('fb');fb.className='fb';fb.textContent='Ini huruf '+deck[qi].ans[1];
     document.getElementById('qact').innerHTML=`<button class="btn qbtn b-no" data-act="no" type="button">Belum hafal</button><button class="btn qbtn b-yes" data-act="yes" type="button">Aku benar! ✓</button>`;
     quiz.querySelector('[data-act=yes]').focus({preventScroll:true})};
-  const answer=ok=>{if(busy)return;busy=true;
-    if(ok)score++;else miss.push(deck[qi]);marks[qi]=ok?'ok':'no';
-    quiz.querySelector('.qdots').innerHTML=dotsHtml();
-    quiz.querySelectorAll('.qact button').forEach(b=>b.disabled=true);
-    const slot=quiz.querySelector('.slot');slot.classList.remove('in');slot.classList.add(ok?'out-r':'out-l');
-    setTimeout(()=>{busy=false;qi++;qi<N?renderCard():renderEnd()},reduce?0:430)};
   const renderEnd=()=>{const msg=score===N?'Masya Allah, hafal semua!':score>=3?'Bagus sekali, terus belajar ya!':'Ayo coba lagi, semangat!';
-    quiz.innerHTML=`<div class="qend"><div class="bigstars" role="img" aria-label="${score} dari ${N} bintang">${Array.from({length:N},(_,i)=>`<span class="${i<score?'on':''}" style="animation-delay:${i*.12}s">★</span>`).join('')}</div>
-    <p class="qscore">Ananda hafal ${score} dari ${N} huruf</p><p class="qmsg">${msg}</p>
+    quiz.innerHTML=segHtml()+`<div class="qend"><div class="bigstars" role="img" aria-label="${score} dari ${N} bintang">${Array.from({length:N},(_,i)=>`<span class="${i<score?'on':''}" style="animation-delay:${i*.12}s">★</span>`).join('')}</div>
+    <p class="qscore">Ananda ${mode==='mc'?'menjawab benar':'hafal'} ${score} dari ${N} huruf</p><p class="qmsg">${msg}</p>
     ${miss.length?`<p class="qmsg">Yuk ulangi lagi:</p><div class="chips">${miss.map(([l,n])=>`<span><b lang="ar">${esc(l)}</b>${esc(n)}</span>`).join('')}</div>`:''}
     <div class="qact"><button class="btn qbtn" type="button" data-act="again">Main lagi ↻</button></div></div>`;
     quiz.querySelector('[data-act=again]').focus({preventScroll:true})};
-  const newRound=()=>{deck=shuffle(pool).slice(0,N);qi=0;score=0;marks=[];miss=[];renderCard()};
+  const newRound=()=>{deck=shuffle(pool).slice(0,N).map(ans=>({ans,opts:shuffle([ans,...shuffle(pool.filter(x=>x!==ans)).slice(0,3)])}));qi=0;score=0;marks=[];miss=[];renderCard()};
   quiz.addEventListener('click',e=>{
-    if(e.target.closest('.fc')){flip();return}
+    const m=e.target.closest('[data-mode]');if(m){if(m.dataset.mode!==mode){mode=m.dataset.mode;first=true;newRound();quiz.querySelector(`[data-mode=${mode}]`).focus({preventScroll:true})}return}
+    const o=e.target.closest('[data-opt]');if(o){pick(+o.dataset.opt);return}
+    if(e.target.closest('button.fc')){flip();return}
     const a=e.target.closest('[data-act]');if(!a||a.disabled)return;
-    ({flip,yes:()=>answer(true),no:()=>answer(false),again:newRound})[a.dataset.act]()});
+    ({flip,next:go,yes:()=>{record(true);go()},no:()=>{record(false);go()},again:newRound})[a.dataset.act]()});
   newRound();
 
   /* jadwal sholat (kriteria Kemenag RI, koordinat acuan DKI Jakarta) */
