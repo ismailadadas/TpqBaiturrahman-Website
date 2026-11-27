@@ -196,6 +196,26 @@ background:linear-gradient(160deg,#240a12 0%,#4d1219 35%,#8d1f20 70%,#b12b24 88%
 .times li.sunnah span::after{content:" · sunnah";font-weight:500;font-size:12px;opacity:.8}
 .pr-note{position:relative;margin-top:24px;font-size:13.5px;color:#ffd5c8;max-width:80ch}
 
+/* donasi */
+.donate{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(26px,4.5vw,52px);border-radius:36px;background:var(--card);box-shadow:0 1px 0 var(--line),0 30px 60px -40px rgba(94,21,19,.55)}
+.donate::before{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,201,60,.35),rgba(255,201,60,0) 70%);pointer-events:none}
+.donate .lead{margin-top:16px}
+.hadith{margin:22px 0 0;padding:16px 20px;border-radius:20px;background:light-dark(#fff4d6,#2f2410);border-left:4px solid var(--sun);font-size:15.5px;line-height:1.6}
+.hadith cite{display:block;margin-top:6px;font-style:normal;font-weight:700;font-size:13.5px;color:var(--soft)}
+.donate .btn-wa{margin-top:26px}
+.don-note{display:block;margin-top:12px;font-size:14px;color:var(--soft)}
+.uses{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.uses li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:center;padding:16px 18px;border-radius:22px;background:light-dark(#fbefe7,#2e1a16);transition:transform .3s cubic-bezier(.3,1.8,.5,1)}
+.uses li:hover{transform:translateX(-4px)}
+.uses .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;color:#fff}
+.uses .ic svg{width:26px;height:26px}
+.uses b{display:block;font:600 17px/1.2 Fredoka,sans-serif}
+.uses span{display:block;font-size:14.5px;color:var(--soft);margin-top:3px}
+.uses-h{margin:0 0 14px;font:600 18px/1.2 Fredoka,sans-serif;color:var(--soft)}
+.jar{width:64px;height:64px;margin-bottom:14px}
+@media(max-width:900px){.donate{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.donate .btn-wa{width:100%;justify-content:center}}
+
 /* testimoni */
 .testi{background:light-dark(#fbefe7,#1f110e)}
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:44px}
@@ -560,6 +580,30 @@ footer nav a:hover{text-decoration:underline}
   </div>
 </section>
 
+<section class="band testi" id="donasi" style="padding-top:0">
+  <div class="wrap">
+    <div class="donate" data-reveal>
+      <div>
+        <svg class="jar" viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="22" width="44" height="36" rx="10" fill="#b12b24"/><rect x="16" y="16" width="32" height="10" rx="4" fill="#8a1d19"/><rect x="26" y="18" width="12" height="3" rx="1.5" fill="#3a0e0c"/><path d="M32 50s-11-6.6-11-14a6 6 0 0 1 11-3.3A6 6 0 0 1 43 36c0 7.4-11 14-11 14z" fill="#ffc93c"/><circle cx="32" cy="8" r="5" fill="#ffc93c"/></svg>
+        <p class="kicker">Donasi &amp; infaq</p>
+        <h2>Ikut menjaga semangat belajar santri</h2>
+        <p class="lead">Belajar di TPQ Baiturrahman gratis untuk semua anak. Agar kegiatan ini terus berjalan dan semakin bermanfaat, kami membuka kesempatan bagi Bapak/Ibu yang ingin berdonasi atau berinfaq. Setiap rupiah yang Anda titipkan akan digunakan untuk kegiatan belajar dan pembinaan santri, insya Allah.</p>
+        <blockquote class="hadith">"Apabila seorang manusia meninggal dunia, terputuslah amalnya kecuali tiga perkara: sedekah jariyah, ilmu yang bermanfaat, dan anak shalih yang mendoakannya."<cite>HR. Muslim</cite></blockquote>
+        <a class="btn btn-wa" href="https://wa.me/6281213041786?text=Assalamu%27alaikum%2C%20saya%20ingin%20berdonasi%20%28infaq%29%20untuk%20kegiatan%20TPQ%20Baiturrahman.%20Bagaimana%20caranya%3F" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa"/></svg>Donasi via WhatsApp
+        </a>
+        <span class="don-note">Info rekening dan cara donasi dijelaskan langsung oleh pengurus melalui WhatsApp <span class="time">+62 812-1304-1786</span>.</span>
+      </div>
+      <div><p class="uses-h">Donasi Anda membantu</p>
+      <ul class="uses">
+        <li><span class="ic" style="background:#b12b24"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></span><div><b>Sarana belajar mengaji</b><span>Al-Qur'an, buku Iqra', dan perlengkapan belajar santri.</span></div></li>
+        <li><span class="ic" style="background:#17807d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><path d="M16 4.5a3 3 0 0 1 0 6M17.5 14c1.8.6 3 2.3 3.4 5"/></svg></span><div><b>Pembinaan akhlak</b><span>Mendukung para pengajar yang mendampingi santri.</span></div></li>
+        <li><span class="ic" style="background:#e9a20f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4.5a2.5 2.5 0 0 0 2.6 3M17 6h2.5a2.5 2.5 0 0 1-2.6 3"/></svg></span><div><b>Kegiatan &amp; lomba anak</b><span>Seperti Festival Anak Shaleh dan kegiatan kreativitas Islam.</span></div></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
 <svg class="wave red" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true" style="background:light-dark(#fbefe7,#1f110e)"><path d="M0 50V22C200 0 350 40 600 24S1000 0 1200 26V50z" fill="currentColor"/></svg>
 <section class="band contact" id="kontak">
   <svg class="pattern" aria-hidden="true"><defs><pattern id="pt" width="80" height="80" patternUnits="userSpaceOnUse"><use href="#star8" transform="scale(.4)"/></pattern></defs><rect width="100%" height="100%" fill="url(#pt)"/></svg>
@@ -591,7 +635,7 @@ footer nav a:hover{text-decoration:underline}
 <footer>
   <div class="wrap">
     <span>© 2026 TPQ Baiturrahman Setu, Cipayung</span>
-    <nav aria-label="Tautan footer"><a href="#beranda">Beranda</a><a href="#sholat">Jadwal Sholat</a><a href="#tentang">Tentang</a><a href="#layanan">Layanan</a><a href="#testimoni">Testimoni</a><a href="#kontak">Kontak</a></nav>
+    <nav aria-label="Tautan footer"><a href="#beranda">Beranda</a><a href="#sholat">Jadwal Sholat</a><a href="#tentang">Tentang</a><a href="#layanan">Layanan</a><a href="#testimoni">Testimoni</a><a href="#donasi">Donasi</a><a href="#kontak">Kontak</a></nav>
   </div>
 </footer>
 
